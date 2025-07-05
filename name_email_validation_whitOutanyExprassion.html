@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Login</title>
 
   <style>
     body {
@@ -17,7 +17,7 @@
       background-color: rgb(184, 184, 184);
       box-shadow: 4px 4px 4px 4px rgb(173, 173, 173);
       width: 300px;
-      height: 400px;
+      height: 500px;
       margin: 30px auto;
       padding: 10px;
       border: none;
@@ -69,7 +69,8 @@
 
 
   <div class="container">
-<img src="https://i.ibb.co/8DPTGGjf/default.png" alt="default" border="0">
+    <img src="default.jpg" alt="default" border="0">
+    <!-- https://i.ibb.co/8DPTGGjf/default.png  -->
 
     <hr>
     <form action="" id="form" method="post">
@@ -78,6 +79,8 @@
       <small id="nameError"> </small><br>
       <input type="text" placeholder="enter your email" id=email><br>
       <small id="emailError"></small><br>
+      <input type="text" placeholder="enter your password" id=password><br>
+      <small id="password-error"></small><br>
       <input type="submit" value="send" id="submit" onclick="return validUser()">
     </form>
 
@@ -112,7 +115,7 @@
       }
 
       var email = document.getElementById('email').value;
-      var x = email.split("@");      
+      var x = email.split("@");
 
       if (email == "") {
         document.getElementById('emailError').textContent = "email is required try again";
@@ -137,14 +140,27 @@
         document.getElementById('emailError').textContent = "invalid the .com portion";
         return false;
       }
-      else if (x[0].includes('!')||x[0].includes('#')||x[0].includes('$')||x[0].includes('%')||x[0].includes('^')||x[0].includes('&')||x[0].includes('*')||x[0].includes('(')||x[0].includes(')')||x[0].includes('_')||x[0].includes('-')||x[0].includes('=')||x[0].includes('+')||x[0].includes('<')||x[0].includes('>')||x[0].includes('`')||x[0].includes('{')||x[0].includes('}')||x[0].includes('[')||x[0].includes(']')||x[0].includes(':')||x[0].includes('|') ){
-         document.getElementById('emailError').textContent = "Email can't have !,#,$,%,^,&,*,(),_,-,=,+,<,>,{},[],:,|";
+      else if (x[0].includes('!') || x[0].includes('#') || x[0].includes('$') || x[0].includes('%') || x[0].includes('^') || x[0].includes('&') || x[0].includes('*') || x[0].includes('(') || x[0].includes(')') || x[0].includes('_') || x[0].includes('-') || x[0].includes('=') || x[0].includes('+') || x[0].includes('<') || x[0].includes('>') || x[0].includes('`') || x[0].includes('{') || x[0].includes('}') || x[0].includes('[') || x[0].includes(']') || x[0].includes(':') || x[0].includes('|' || x[0].includes(' '))) {
+        document.getElementById('emailError').textContent = "Email can't have !,#,$,%,^,&,*,(),_,-,=,+,<,>,{},[],:,|";
         return false;
       }
       else {
         document.getElementById("emailError").textContent = '';
       }
+
+      let password = document.getElementById("password").value;
+
+      if (password == "") {
+        document.getElementById("password-error").textContent = "enter the password";
+        return false;
+      }
+      else if (!password.includes("@") && !password.includes("!") && !password.includes("#") && !password.includes("%") && !password.includes("^") && !password.includes("*") && !password.includes("()") && !password.includes("/") && !password.includes("?") && !password.includes("&")) {
+        document.getElementById("password-error").textContent = "must be include one or more @,!,#,$,%,^,&,*,(),/,?";
+        return false;
+
+      }
     }
+
 
 
 
